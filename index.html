@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>openDesk Edu Landscape - Interactive Open-Source Ecosystem Map</title>
+  <meta name="description" content="Interactive landscape of the openDesk Edu ecosystem - 25 integrated open-source services for educational institutions. Inspired by the CNCF landscape.">
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:title" content="openDesk Edu Landscape">
+  <meta property="og:description" content="25 integrated open-source services for educational institutions">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://landscape.opendesk-edu.org">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="header-content">
+        <h1>🌄 openDesk Edu Landscape</h1>
+        <p class="subtitle">Interactive map of the openDesk Edu open-source ecosystem</p>
+        <p class="stats">
+          <strong>25</strong> Services •
+          <strong>5</strong> Categories •
+          <strong>100%</strong> Open Source
+        </p>
+      </div>
+      <div class="header-actions">
+        <a href="https://opendesk-edu.org" class="btn btn-primary">opendesk-edu.org →</a>
+        <a href="https://github.com/opendesk-edu" class="btn btn-secondary">View on GitHub</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="controls">
+      <div class="search-container">
+        <input
+          type="text"
+          id="search"
+          placeholder="🔍 Search services, categories, or tags..."
+          autocomplete="off"
+        >
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="critical">Critical Tier</button>
+          <button class="filter-btn" data-filter="high">High Tier</button>
+          <button class="filter-btn" data-filter="standard">Standard Tier</button>
+          <button class="filter-btn" data-filter="low">Low Tier</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-bar">
+      <div class="stat-card">
+        <div class="stat-number">25</div>
+        <div class="stat-label">Services</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">5</div>
+        <div class="stat-label">Categories</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">7</div>
+        <div class="stat-label">License Types</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Open Source</div>
+      </div>
+    </section>
+
+    <section id="landscape" class="landscape">
+      <!-- Categories will be rendered here -->
+    </section>
+
+    <section class="metadata">
+      <h2>Landscape Statistics</h2>
+      <div class="metadata-grid">
+        <div class="metadata-section">
+          <h3>License Distribution</h3>
+          <div id="license-stats"></div>
+        </div>
+        <div class="metadata-section">
+          <h3>Maturity Levels</h3>
+          <div id="maturity-stats"></div>
+        </div>
+        <div class="metadata-section">
+          <h3>Service Tiers</h3>
+          <div id="tier-stats"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="info">
+      <h2>About This Landscape</h2>
+      <p>
+        The <strong>openDesk Edu Landscape</strong> is an interactive map of the 25 integrated open-source services
+        that make up the openDesk Edu platform. Inspired by the
+        <a href="https://landscape.cncf.io" target="_blank" rel="noopener">CNCF Landscape</a>, this visualization
+        helps institutions, IT administrators, and developers understand the complete ecosystem.
+      </p>
+
+      <h3>How to Use</h3>
+      <ul>
+        <li><strong>Search</strong> for specific services, categories, or tags</li>
+        <li><strong>Filter</strong> by service tier (Critical, High, Standard, Low)</li>
+        <li><strong>Click</strong> on any service to visit its website or repository</li>
+        <li><strong>Browse</strong> by category to understand the ecosystem structure</li>
+      </ul>
+
+      <h3>Contribute</h3>
+      <p>
+        This landscape is open-source and community-driven. To add a new service, update information, or suggest
+        improvements, please open a pull request on
+        <a href="https://github.com/opendesk-edu/landscape" target="_blank" rel="noopener">GitHub</a>.
+        The data is stored in <code>data/services.yaml</code> and can be edited easily.
+      </p>
+
+      <h3>Tier Classification</h3>
+      <ul>
+        <li><strong>Critical Tier</strong> (8 services): Foundation services with 99.9% availability targets (e.g., Keycloak, Nextcloud, email infrastructure)</li>
+        <li><strong>High Tier</strong> (7 services): Important services with 99.5% availability (e.g., LMS, video conferencing, helpdesk)</li>
+        <li><strong>Standard Tier</strong> (8 services): Collaboration tools with 99.0% availability (e.g., Kanban, surveys, documentation)</li>
+        <li><strong>Low Tier</strong> (2 services): Supporting tools (e.g., stateless diagram editors)</li>
+      </ul>
+
+      <h3>Related Resources</h3>
+      <ul>
+        <li><a href="https://opendesk-edu.org">opendesk-edu.org</a> - Main project website</li>
+        <li><a href="https://github.com/opendesk-edu/opendesk-edu/tree/main/openspec/specs">OpenSpec Documentation</a> - Complete specifications</li>
+        <li><a href="https://github.com/opendesk-edu/opendesk-edu">GitHub Repository</a> - Source code and issues</li>
+        <li><a href="https://landscape.cncf.io">CNCF Landscape</a> - Inspiration for this project</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      <strong>openDesk Edu Landscape</strong> • Licensed under Apache-2.0 •
+      Inspired by the <a href="https://landscape.cncf.io">CNCF Landscape</a> •
+      <a href="https://github.com/opendesk-edu/landscape">Contribute on GitHub</a>
+    </p>
+    <p class="footer-stats">
+      Data last updated: <span id="last-updated"></span>
+    </p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

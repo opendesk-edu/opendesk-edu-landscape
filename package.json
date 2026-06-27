@@ -1,0 +1,13 @@
+{
+  "name": "openDesk Edu Landscape",
+  "version": "1.0.0",
+  "description": "Interactive landscape of the openDesk Edu ecosystem - 25 integrated open-source services for educational institutions",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "serve": "python3 -m http.server 8000"
+  },
+  "keywords": ["open-source", "education", "kubernetes", "landscape", "opendesk-edu", "digital-sovereignty"],
+  "author": "Tobias Weiß and openDesk Edu Contributors",
+  "license": "Apache-2.0"
+}
