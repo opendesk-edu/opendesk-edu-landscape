@@ -1,0 +1,17 @@
+image: alpine:3.21
+
+stages:
+  - validate
+
+validate:
+  stage: validate
+  script:
+    - echo "Validating static site structure..."
+    - test -f index.html && echo "  ✅ index.html"
+    - test -f styles.css && echo "  ✅ styles.css"
+    - test -f script.js && echo "  ✅ script.js"
+    - test -d data && echo "  ✅ data/"
+    - test -d docs && echo "  ✅ docs/"
+    - echo "✅ Static site validated"
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_COMMIT_BRANCH == "master"
