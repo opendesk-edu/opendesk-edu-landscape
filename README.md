@@ -5,7 +5,7 @@ SPDX-License-Identifier: Apache-2.0
 
 # 🌄 openDesk Edu Landscape
 
-An interactive, visual map of the openDesk Edu open-source ecosystem — 25 integrated services for educational institutions. Inspired by the [CNCF Landscape](https://landscape.cncf.io).
+An interactive, visual map of the openDesk Edu open-source ecosystem — integrated services for educational institutions. Inspired by the [CNCF Landscape](https://landscape.cncf.io).
 
 **Live Site**: https://landscape.opendesk-edu.org
 
@@ -20,7 +20,7 @@ The openDesk Edu Landscape is an interactive visualization of the complete ecosy
 
 ## Features
 
-✅ **Interactive Visualization** - Browse 25 services across 5 categories
+✅ **Interactive Visualization** - Browse services across 5 categories
 🔍 **Powerful Search** - Find services by name, description, or tags
 🎯 **Tier Filtering** - Filter by service tier (Critical, High, Standard, Low)
 📈 **Statistics** - View license distribution, tier breakdown, and ecosystem metrics
@@ -30,7 +30,7 @@ The openDesk Edu Landscape is an interactive visualization of the complete ecosy
 
 ## Categories
 
-The 25 services are organized into 5 main categories:
+The services are organized into 5 main categories:
 
 1. **Identity & Access** (3 services) - Keycloak, Nubus, Self-Service Password
 2. **Learning Management** (4 services) - ILIAS, Moodle, BigBlueButton, Jitsi, XWiki
@@ -142,7 +142,7 @@ This project is inspired by the [CNCF Landscape](https://landscape.cncf.io), whi
 
 **Key differences from CNCF Landscape:**
 - Focused on educational technology use cases
-- Simpler structure (25 services vs. 1000+)
+- Simpler structure (integrated services vs. 1000+)
 - Self-contained static site (no build process)
 - Easier to contribute (YAML data file)
 - Apache-2.0 licensed (CNCF is also Apache-2.0)

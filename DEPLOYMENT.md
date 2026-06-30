@@ -99,7 +99,7 @@ php -S localhost:8000
 ## Features Implemented
 
 ✅ **Interactive Visualization**
-- Browse 25 services across 5 categories
+- Browse services across 5 categories
 - Hierarchical category → subcategory → service structure
 
 ✅ **Search Functionality**
