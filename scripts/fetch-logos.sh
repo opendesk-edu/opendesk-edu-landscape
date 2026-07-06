@@ -1,0 +1,57 @@
+#!/bin/bash
+# SPDX-FileCopyrightText: 2026 openDesk Edu Contributors
+# SPDX-License-Identifier: Apache-2.0
+#
+# Fetches service logos from official sources into hosted_logos/
+# Usage: bash scripts/fetch-logos.sh
+#
+# Overwrite existing logos: LOGO_FORCE=1 bash scripts/fetch-logos.sh
+
+set -euo pipefail
+
+cd "$(dirname "$0")/../hosted_logos"
+
+FORCE="${LOGO_FORCE:-}"
+WGET_OPTS="-q"
+[ -n "$FORCE" ] && WGET_OPTS="$WGET_OPTS -N" || WGET_OPTS="$WGET_OPTS --no-clobber"
+
+echo "=== Fetching service logos ==="
+
+# Map of filename -> URL
+declare -A LOGOS
+LOGOS=(
+  # Operations
+  ["prometheus.svg"]="https://raw.githubusercontent.com/prometheus/prometheus/refs/heads/main/web/ui/static/img/prometheus-logo.svg"
+  ["grafana.svg"]="https://raw.githubusercontent.com/grafana/grafana/main/public/img/grafana_icon.svg"
+  ["loki.svg"]="https://raw.githubusercontent.com/grafana/loka/main/docs/sources/logo.png"
+  ["traefik.svg"]="https://raw.githubusercontent.com/traefik/traefik/v3.3/docs/content/assets/img/traefik.logo.svg"
+  ["docker.svg"]="https://raw.githubusercontent.com/docker/compose/main/logo.png"
+  ["harbor.svg"]="https://raw.githubusercontent.com/goharbor/harbor/main/src/portal/src/images/harbor-logo.svg"
+  # Identity
+  ["keycloak.svg"]="https://raw.githubusercontent.com/keycloak/keycloak/main/themes/src/main/resources/theme/base/login/resources/keycloak.svg"
+  # LMS
+  ["moodle.svg"]="https://raw.githubusercontent.com/moodle/moodle/main/pix/moodlelogo.svg"
+  ["jitsi.svg"]="https://raw.githubusercontent.com/jitsi/jitsi-meet/master/images/jitsi-logo.svg"
+  # Collaboration
+  ["nextcloud.svg"]="https://raw.githubusercontent.com/nextcloud/server/main/core/img/logo/logo.svg"
+  ["etherpad.svg"]="https://raw.githubusercontent.com/ether/etherpad-lite/master/src/static/images/etherpad.svg"
+  # Communication
+  ["element.svg"]="https://raw.githubusercontent.com/element-hq/element-web/master/images/element-logo.svg"
+)
+
+for filename in "${!LOGOS[@]}"; do
+  url="${LOGOS[$filename]}"
+  if [ -f "$filename" ] && [ -z "$FORCE" ]; then
+    echo "  ⏭️  $filename already exists"
+    continue
+  fi
+  echo "  ⬇️  $filename"
+  # Try SVG first, fall back to PNG; save with correct extension
+  if wget $WGET_OPTS -O "$filename" "$url" 2>/dev/null; then
+    echo "    ✓ $filename"
+  else
+    echo "    ✗ Failed: $url"
+  fi
+done
+
+echo "=== Done ==="
