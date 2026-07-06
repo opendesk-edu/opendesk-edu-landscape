@@ -46,8 +46,14 @@ jobs:
       - run: npm ci
       - run: npm run build
       - uses: actions/configure-pages@v4
+      - name: Prepare static files for deployment
+        run: |
+          mkdir -p _site/data _site/hosted_logos
+          cp index.html styles.css script.js _site/
+          cp data/services.js data/services.yaml _site/data/
+          cp -r hosted_logos/* _site/hosted_logos/
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: '_site'
       - id: deployment
         uses: actions/deploy-pages@v4
