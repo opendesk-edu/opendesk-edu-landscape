@@ -23,9 +23,9 @@
       <div class="header-content">
         <h1>🌄 openDesk Edu Landscape</h1>
         <p class="subtitle">Interactive map of the openDesk Edu open-source ecosystem</p>
-        <p class="stats">
-          <strong>25</strong> Services •
-          <strong>5</strong> Categories •
+        <p class="stats" id="header-stats">
+          <strong id="stat-services">-</strong> Services •
+          <strong id="stat-categories">-</strong> Categories •
           <strong>100%</strong> Open Source
         </p>
       </div>
@@ -55,17 +55,17 @@
       </div>
     </section>
 
-    <section class="stats-bar">
+    <section class="stats-bar" id="stats-bar">
       <div class="stat-card">
-        <div class="stat-number">25</div>
+        <div class="stat-number" id="stat-count-services">-</div>
         <div class="stat-label">Services</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number">5</div>
+        <div class="stat-number" id="stat-count-categories">-</div>
         <div class="stat-label">Categories</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number">7</div>
+        <div class="stat-number" id="stat-count-licenses">-</div>
         <div class="stat-label">License Types</div>
       </div>
       <div class="stat-card">
@@ -118,7 +118,8 @@
         This landscape is open-source and community-driven. To add a new service, update information, or suggest
         improvements, please open a pull request on
         <a href="https://github.com/opendesk-edu/landscape" target="_blank" rel="noopener">GitHub</a>.
-        The data is stored in <code>data/services.yaml</code> and can be edited easily.
+        The data is stored in <code>data/services.yaml</code> — edit this file, then run
+        <code>npm run build</code> to regenerate the JavaScript.
       </p>
 
       <h3>Tier Classification</h3>
@@ -132,7 +133,7 @@
       <h3>Related Resources</h3>
       <ul>
         <li><a href="https://opendesk-edu.org">opendesk-edu.org</a> - Main project website</li>
-        <li><a href="https://github.com/opendesk-edu/opendesk-edu/tree/main/openspec/specs">OpenSpec Documentation</a> - Complete specifications</li>
+        <li><a href="https://github.com/opendesk-edu/opendesk-edu-spec">OpenSpec Documentation</a> - Complete specifications</li>
         <li><a href="https://github.com/opendesk-edu/opendesk-edu">GitHub Repository</a> - Source code and issues</li>
         <li><a href="https://landscape.cncf.io">CNCF Landscape</a> - Inspiration for this project</li>
       </ul>
@@ -150,6 +151,7 @@
     </p>
   </footer>
 
+  <script src="data/services.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
