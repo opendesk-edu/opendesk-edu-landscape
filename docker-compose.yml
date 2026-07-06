@@ -1,0 +1,25 @@
+services:
+  landscape:
+    build: .
+    image: landscape-opendesk-edu:latest
+    container_name: landscape-opendesk-edu
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 64M
+    networks:
+      - traefik-public
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik-public"
+      - "traefik.http.routers.landscape-opendesk-edu.rule=Host(`landscape.opendesk-edu.org`)"
+      - "traefik.http.routers.landscape-opendesk-edu.priority=100"
+      - "traefik.http.routers.landscape-opendesk-edu.entrypoints=websecure"
+      - "traefik.http.routers.landscape-opendesk-edu.tls=true"
+      - "traefik.http.routers.landscape-opendesk-edu.tls.certresolver=mytlschallenge"
+      - "traefik.http.services.landscape-opendesk-edu.loadbalancer.server.port=80"
+
+networks:
+  traefik-public:
+    external: true

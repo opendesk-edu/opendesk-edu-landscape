@@ -1,0 +1,27 @@
+name: Validate Landscape
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: node scripts/generate-data.js
+      - name: Check generated data is up to date
+        run: git diff --exit-code data/services.js || (echo 'data/services.js is stale — run npm run build and commit'; exit 1)
+      - name: Validate static files
+        run: |
+          test -f index.html && echo 'index.html OK'
+          test -f styles.css && echo 'styles.css OK'
+          test -f script.js && echo 'script.js OK'
+          test -f data/services.yaml && echo 'services.yaml OK'
