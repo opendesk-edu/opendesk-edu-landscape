@@ -3,6 +3,179 @@
 # Format: YAML for easy editing and community contributions
 
 categories:
+  - id: operations
+    name: "Operations & Infrastructure"
+    description: "Monitoring, observability, container runtime, and infrastructure services"
+    color: "#2ECC71"
+    icon: "⚙️"
+    subcategories:
+      - name: "Monitoring & Observability"
+        items:
+          - name: "Prometheus"
+            description: "Metrics collection and alerting — industry standard for cloud-native monitoring"
+            url: "https://prometheus.io"
+            repository: "https://github.com/prometheus/prometheus"
+            license: "Apache-2.0"
+            category: "operations"
+            subcategory: "Monitoring & Observability"
+            tier: "critical"
+            maturity: "graduated"
+            tags: ["monitoring", "metrics", "alerting", "cncf"]
+
+          - name: "Grafana"
+            description: "Observability dashboards for metrics, logs, and traces with multi-source support"
+            url: "https://grafana.com"
+            repository: "https://github.com/grafana/grafana"
+            license: "AGPL-3.0"
+            category: "operations"
+            subcategory: "Monitoring & Observability"
+            tier: "critical"
+            maturity: "production"
+            logo: "grafana.svg"
+            tags: ["dashboards", "visualization", "observability"]
+
+          - name: "Loki"
+            description: "Log aggregation system with Grafana-native integration and Prometheus-style labels"
+            url: "https://grafana.com/oss/loki"
+            repository: "https://github.com/grafana/loki"
+            license: "AGPL-3.0"
+            category: "operations"
+            subcategory: "Monitoring & Observability"
+            tier: "high"
+            maturity: "production"
+            tags: ["logging", "logs", "aggregation", "grafana"]
+
+          - name: "Prometheus Alertmanager"
+            description: "Alert routing, grouping, and notification for Prometheus alerts"
+            url: "https://prometheus.io/docs/alerting/latest/alertmanager"
+            repository: "https://github.com/prometheus/alertmanager"
+            license: "Apache-2.0"
+            category: "operations"
+            subcategory: "Monitoring & Observability"
+            tier: "high"
+            maturity: "production"
+            tags: ["alerting", "notifications", "prometheus"]
+
+      - name: "Container & Infrastructure"
+        items:
+          - name: "Traefik"
+            description: "Cloud-native reverse proxy and load balancer with automatic HTTPS and Docker discovery"
+            url: "https://traefik.io"
+            repository: "https://github.com/traefik/traefik"
+            license: "MIT"
+            category: "operations"
+            subcategory: "Container & Infrastructure"
+            tier: "critical"
+            maturity: "graduated"
+            tags: ["proxy", "ingress", "reverse-proxy", "tls", "cncf"]
+
+          - name: "Docker"
+            description: "Container runtime for application packaging and deployment"
+            url: "https://docker.com"
+            repository: "https://github.com/moby/moby"
+            license: "Apache-2.0"
+            category: "operations"
+            subcategory: "Container & Infrastructure"
+            tier: "standard"
+            maturity: "graduated"
+            tags: ["containers", "runtime", "docker"]
+
+      - name: "Container Registry"
+        items:
+          - name: "Harbor"
+            description: "Cloud-native container registry with vulnerability scanning, RBAC, and replication"
+            url: "https://goharbor.io"
+            repository: "https://github.com/goharbor/harbor"
+            license: "Apache-2.0"
+            category: "operations"
+            subcategory: "Container Registry"
+            tier: "high"
+            maturity: "graduated"
+            tags: ["registry", "containers", "scanning", "cncf"]
+
+      - name: "Backup & Recovery"
+        items:
+          - name: "Restic (k8up)"
+            description: "Automated Kubernetes backup operator using Restic for encrypted, deduplicated backups"
+            url: "https://k8up.io"
+            repository: "https://github.com/k8up-io/k8up"
+            license: "Apache-2.0"
+            category: "operations"
+            subcategory: "Backup & Recovery"
+            tier: "critical"
+            maturity: "production"
+            tags: ["backup", "disaster-recovery", "kubernetes", "restic"]
+
+  - id: security
+    name: "Security"
+    description: "Password management, credential security, and compliance tools"
+    color: "#E74C3C"
+    icon: "🛡️"
+    subcategories:
+      - name: "Password Management"
+        items:
+          - name: "Vaultwarden"
+            description: "Lightweight, self-hosted Bitwarden-compatible password manager with 2FA and emergency access"
+            url: "https://github.com/dani-garcia/vaultwarden"
+            repository: "https://github.com/dani-garcia/vaultwarden"
+            license: "AGPL-3.0"
+            category: "security"
+            subcategory: "Password Management"
+            tier: "high"
+            maturity: "production"
+            tags: ["passwords", "2fa", "vault", "bitwarden"]
+
+  - id: analytics
+    name: "Analytics & Search"
+    description: "Usage analytics, privacy-friendly tracking, and unified search"
+    color: "#F39C12"
+    icon: "📈"
+    subcategories:
+      - name: "Analytics"
+        items:
+          - name: "Matomo"
+            description: "GDPR-compliant web analytics platform — the ethical alternative to Google Analytics"
+            url: "https://matomo.org"
+            repository: "https://github.com/matomo-org/matomo"
+            license: "GPL-3.0"
+            category: "analytics"
+            subcategory: "Analytics"
+            tier: "high"
+            maturity: "production"
+            tags: ["analytics", "gdpr", "privacy", "tracking"]
+
+      - name: "Search"
+        items:
+          - name: "Meilisearch"
+            description: "Lightning-fast, typo-tolerant search engine with instant results"
+            url: "https://www.meilisearch.com"
+            repository: "https://github.com/meilisearch/meilisearch"
+            license: "MIT"
+            category: "analytics"
+            subcategory: "Search"
+            tier: "standard"
+            maturity: "production"
+            tags: ["search", "fulltext", "typo-tolerant"]
+
+  - id: media
+    name: "Media"
+    description: "Video streaming, media management, and lecture recordings"
+    color: "#9B59B6"
+    icon: "🎬"
+    subcategories:
+      - name: "Video Streaming"
+        items:
+          - name: "Jellyfin"
+            description: "Free Software media system for managing and streaming lecture recordings and educational video"
+            url: "https://jellyfin.org"
+            repository: "https://github.com/jellyfin/jellyfin"
+            license: "GPL-2.0"
+            category: "media"
+            subcategory: "Video Streaming"
+            tier: "standard"
+            maturity: "production"
+            tags: ["video", "streaming", "media", "lectures"]
+
   - id: identity
     name: "Identity & Access"
     description: "Authentication, authorization, and user management"
@@ -358,45 +531,4 @@ categories:
             maturity: "production"
             tags: ["surveys", "questionnaires", "ldap"]
 
-# Metadata
-metadata:
-  total_services: 25
-  total_categories: 5
-  license_breakdown:
-    - license: "Apache-2.0"
-      count: 6
-    - license: "AGPL-3.0"
-      count: 7
-    - license: "GPL-2.0"
-      count: 3
-    - license: "GPL-3.0"
-      count: 4
-    - license: "MIT"
-      count: 2
-    - license: "LGPL-2.1"
-      count: 2
-    - license: "MPL-2.0"
-      count: 1
-  maturity_levels:
-    - level: "graduated"
-      count: 1
-      description: "Production-ready with extensive community"
-    - level: "production"
-      count: 23
-      description: "Battle-tested in production environments"
-    - level: "incubating"
-      count: 1
-      description: "Growing adoption"
-  service_tiers:
-    - tier: "critical"
-      count: 8
-      description: "Foundation services, 99.9% availability"
-    - tier: "high"
-      count: 7
-      description: "Important services, 99.5% availability"
-    - tier: "standard"
-      count: 8
-      description: "Collaboration tools, 99.0% availability"
-    - tier: "low"
-      count: 2
-      description: "Supporting tools"
+

@@ -30,21 +30,25 @@ The openDesk Edu Landscape is an interactive visualization of the complete ecosy
 
 ## Categories
 
-The services are organized into 5 main categories:
+The services are organized into 9 main categories:
 
-1. **Identity & Access** (3 services) - Keycloak, Nubus, Self-Service Password
-2. **Learning Management** (4 services) - ILIAS, Moodle, BigBlueButton, Jitsi, XWiki
-3. **Content & Collaboration** (8 services) - Nextcloud, OpenCloud, Collabora, Etherpad, CryptPad, Notes, Draw.io, Excalidraw, BookStack, TYPO3
-4. **Project Management** (2 services) - OpenProject, Planka
-5. **Communication** (5 services) - OX App Suite, SOGo, Dovecot, Postfix, Element, Zammad, LimeSurvey
+1. **Operations & Infrastructure** (8 services) - Prometheus, Grafana, Loki, Harbor, Traefik, Docker, Restic, Alertmanager
+2. **Security** (1 service) - Vaultwarden
+3. **Analytics & Search** (2 services) - Matomo, Meilisearch
+4. **Media** (1 service) - Jellyfin
+5. **Identity & Access** (3 services) - Keycloak, Nubus, Self-Service Password
+6. **Learning Management** (5 services) - ILIAS, Moodle, BigBlueButton, Jitsi, XWiki
+7. **Content & Collaboration** (10 services) - Nextcloud, OpenCloud, Collabora, Etherpad, CryptPad, Notes, Draw.io, Excalidraw, BookStack, TYPO3
+8. **Project Management** (2 services) - OpenProject, Planka
+9. **Communication** (7 services) - OX App Suite, SOGo, Dovecot, Postfix, Element, Zammad, LimeSurvey
 
 ## Service Tiers
 
 Services are classified by criticality:
 
-- **Critical Tier** (8 services) - Foundation services with 99.9% availability
-- **High Tier** (7 services) - Important services with 99.5% availability
-- **Standard Tier** (8 services) - Collaboration tools with 99.0% availability
+- **Critical Tier** (14 services) - Foundation services with 99.9% availability
+- **High Tier** (12 services) - Important services with 99.5% availability
+- **Standard Tier** (11 services) - Collaboration tools with 99.0% availability
 - **Low Tier** (2 services) - Supporting tools
 
 ## How to Use
@@ -84,7 +88,10 @@ landscape.opendesk-edu.org/
 ├── styles.css              # Stylesheet
 ├── script.js               # Interactive JavaScript
 ├── data/
-│   └── services.yaml       # Landscape data (YAML)
+│   ├── services.yaml       # Landscape data (YAML — source of truth)
+│   └── services.js         # Auto-generated from YAML (via npm run build)
+├── scripts/
+│   └── generate-data.js    # YAML → JS generator
 ├── package.json            # Project metadata
 ├── CNAME                   # Custom domain configuration
 └── README.md               # This file
@@ -96,28 +103,33 @@ We welcome contributions! The landscape is community-driven and designed to be e
 
 ### Adding or Updating a Service
 
-1. **Edit the data file** (`data/services.yaml` or `script.js` for the embedded version):
-   ```yaml
-   - name: "Your Service"
-     description: "Brief description"
-     url: "https://example.com"
-     repository: "https://github.com/org/repo"
-     license: "Apache-2.0"
-     category: "lms"
-     subcategory: "LMS Platforms"
-     tier: "high"
-     maturity: "production"
-     tags: ["tag1", "tag2"]
-   ```
+1. **Edit the data file** (`data/services.yaml` — the single source of truth):
+    ```yaml
+    - name: "Your Service"
+      description: "Brief description"
+      url: "https://example.com"
+      repository: "https://github.com/org/repo"
+      license: "Apache-2.0"
+      category: "lms"
+      subcategory: "LMS Platforms"
+      tier: "high"
+      maturity: "production"
+      tags: ["tag1", "tag2"]
+    ```
 
-2. **Add a logo** (optional but recommended):
-   - Place logo SVG in `hosted_logos/` directory
-   - Reference it in the entry: `logo: "your-service.svg"`
+2. **Run the generator** to update the JavaScript:
+    ```bash
+    npm run build
+    ```
 
-3. **Open a Pull Request** with:
-   - Clear description of the service
-   - Justification for the category and tier
-   - Confirmation that the license is compatible (open source)
+3. **Add a logo** (optional but recommended):
+    - Place logo SVG in `hosted_logos/` directory
+    - Reference it in the entry: `logo: "your-service.svg"`
+
+4. **Open a Pull Request** with:
+    - Clear description of the service
+    - Justification for the category and tier
+    - Confirmation that the license is compatible (open source)
 
 ### Tier Classification Guidelines
 
@@ -165,7 +177,7 @@ Copyright 2026 openDesk Edu Contributors
 ## Related Projects
 
 - **[opendesk-edu.org](https://opendesk-edu.org)** - Main project website
-- **[OpenSpec Documentation](https://github.com/opendesk-edu/opendesk-edu/tree/main/openspec/specs)** - Complete specifications
+- **[OpenSpec Documentation](https://github.com/opendesk-edu/opendesk-edu-spec)** - Complete specifications
 - **[opendesk-edu GitHub](https://github.com/opendesk-edu/opendesk-edu)** - Source code and issues
 - **[CNCF Landscape](https://landscape.cncf.io)** - Inspiration for this project
 
