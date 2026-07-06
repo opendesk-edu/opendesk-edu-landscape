@@ -1,7 +1,8 @@
-image: alpine:3.21
+image: node:22-alpine
 
 stages:
   - validate
+  - build
 
 validate:
   stage: validate
@@ -11,7 +12,17 @@ validate:
     - test -f styles.css && echo "  ✅ styles.css"
     - test -f script.js && echo "  ✅ script.js"
     - test -d data && echo "  ✅ data/"
+    - test -f data/services.yaml && echo "  ✅ data/services.yaml"
     - test -d docs && echo "  ✅ docs/"
     - echo "✅ Static site validated"
+
+build:
+  stage: build
+  script:
+    - npm ci
+    - node scripts/generate-data.js
+    - echo "Checking generated data is up to date..."
+    - git diff --exit-code data/services.js || (echo "❌ data/services.js is stale — run 'npm run build'"; exit 1)
+    - echo "✅ data/services.js matches data/services.yaml"
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_COMMIT_BRANCH == "master"
